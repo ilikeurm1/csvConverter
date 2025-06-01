@@ -1,10 +1,10 @@
-INIT TEST:
+25/05 - INIT TEST (test1.csv):
 - SENSOR PRECALIBRATED tot 400!
 - plant stond hele dag in donkere kamer, we plaatsen de CO2 meter erin en sluiten pot.
 - observatie: CO2 stijgt meteen van 400 naar 2000.
 - we openen de pot, CO2 ontsnapt en meting zakt terug naar 400.
 
-TWEEDE TEST (late namiddag):
+TWEEDE TEST (late namiddag 25/05):
 - SENSOR NIET PRECALIBRATED, test vlak na de eerste test
 - pot toe (CO2 initieel 365), en observatie van CO2 tijdens pot in verlichte toestand.
 - CO2 blijkt inderdaad te zakken, temperatuur neemt toe.
@@ -23,7 +23,7 @@ Experiment: 21:42 verduistering, effect op CO2
 - 06:12 - 1802ppm (
 - 08:27 - 1975ppm (
 
-Experiment: licht terug aan om 8:28:
+VERVOLG TWEEDE TEST 26/05: licht terug aan om 8:28:
 - waarden stijgen enkele minuten verder tot 1986 en beginnen dan te zakken.
 - 8:31, zakt onder 1980ppm
 - 8:32, zakt snel verder tot onder 1950ppm
@@ -42,7 +42,7 @@ Experiment: licht terug aan om 8:28:
 - 16:30 iets gestegen tot 91ppm.
 EINDE 16:33.
 
-DERDE TEST:
+DERDE TEST 26-27/05
 - Gestart met calibratie om 17:30, metingen 17:50 in lucht tot 18:13 (lichtrijk)
 - In pot (die hele tijd toe was), 18:13. Korte stijging 428 -> 451, dan sterke daling (pot is 's avonds CO2 arm) tot 10 en lager.
 - Vanaf bepaald moment, langzame stijging door minder licht.
@@ -53,7 +53,7 @@ DERDE TEST:
 - 5:55, 1636ppm,
 - einde test 7:13, 1747mm
 
-VIERDE TEST
+VIERDE TEST 27-28/05
 - start 7:15 met 1757 a 1764ppm, licht aan om 7:18.
 - 7:47 1477ppm, donkere dag dus tragere CO2 absorptie
 - 8:16 1370ppm,
@@ -63,6 +63,14 @@ VIERDE TEST
 - 14:42 166ppm. 
 - 17:43 235ppm.
 - 21:54 volledig duister, 765ppm.
+- 03:45 al tot 1725ppm (anders dan in 3e test)
+- einde om 8:43 (2000ppm).
+- pot toehouden, sensor eruit.
+
+VIJFDE TEST - 30/05
+- start kalibratie in buitenlucht (12:40) tot 400 ppm
+- sensor meteen in de pot vanaf 13:02, stijgt uiteraard tot hoge waarden
+
 
 
 
