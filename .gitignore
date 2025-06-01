@@ -1,0 +1,4 @@
+.mypy_cache/
+converted_measurements/
+plots/
+detailed_plots/

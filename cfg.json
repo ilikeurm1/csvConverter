@@ -1,0 +1,12 @@
+{
+    "detailed_plots": {
+        "Test1.csv": {
+            "from": "17:37:21",
+            "length": "02:15"
+        },
+        "Test2.csv": {
+            "from": "23:32:37", 
+            "length": "10:00"
+        }
+    }
+}
