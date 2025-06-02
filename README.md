@@ -2,23 +2,26 @@
 
 ## cfg file
 
-The config file should look like this:
+The config file should look like this (`detailed_plots` is not to be changed):
 
 ```json
 {
-    "detailed_plots": { // Don't change this
-        "Test1.csv": { // The csv file name (in the measurements folder !!! not converted_)
-            "from": "10:30:00", // Start timestamp (HH:MM:SS)
-            "length": "02:15" // Duration of the plot (HH:MM)
+    "detailed_plots": [
+        {
+            "file": "Test3.csv", // filename
+            "from": "17:31:00",  // starting time
+            "length": "06:15"    // duration in hours
         },
-        "Test2.csv": {
-            "from": "14:00:00", 
-            "length": "01:30"
+        {
+            "file": "Test6.csv",
+            "from": "17:02:00", 
+            "length": "10:30"
         },
-        "Test3.csv": {
-            "from": "09:15:00",
-            "length": "03:45"
+        {
+            "file": "Test6.csv",
+            "from": "13:02:00", 
+            "length": "04:00"
         }
-    }
+    ]
 }
 ```
