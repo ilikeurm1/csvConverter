@@ -80,7 +80,7 @@ def load_config(config_path: str = "cfg.json") -> dict:
         config_path (str): Path to the configuration file.
 
     Returns:
-        dict: Configuration dictionary.
+        dict: Configuration dictionary with list-based structure.
     """
     try:
         with open(config_path, "r") as f:
@@ -89,6 +89,35 @@ def load_config(config_path: str = "cfg.json") -> dict:
         print(
             f"Warning: Could not load config file {config_path}. Skipping detailed plots."
         )
+        return {}
+
+
+def load_config_csv(config_path: str = "cfg.csv") -> dict:
+    """Load configuration from CSV file.
+
+    Args:
+        config_path (str): Path to the CSV configuration file.
+
+    Returns:
+        dict: Configuration dictionary with list-based structure.
+    """
+    try:
+        config = {"detailed_plots": []}
+        
+        with open(config_path, "r") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                plot_config = {
+                    "file": row["File"],
+                    "from": row["Start"],
+                    "length": row["Duration"]
+                }
+                config["detailed_plots"].append(plot_config)
+        
+        return config
+        
+    except (FileNotFoundError, csv.Error) as e:
+        print(f"Warning: Could not load CSV config file {config_path}: {e}")
         return {}
 
 
@@ -108,6 +137,7 @@ def parse_time_duration(duration_str: str) -> datetime.timedelta:
 def plot_detailed_co2_data(
     converted_files_path: str = WRITEPATH,
     config_path: str = "cfg.json",
+    csv_config_path: str = "cfg.csv",
     detailed_plots_folder: str = "detailed_plots",
 ):
     """Plot detailed CO2 levels based on configuration file.
@@ -115,11 +145,15 @@ def plot_detailed_co2_data(
     Args:
         converted_files_path (str): Path to directory containing converted CSV files.
         config_path (str): Path to configuration JSON file.
+        csv_config_path (str): Path to configuration CSV file.
         detailed_plots_folder (str): Folder name to save detailed plots in.
     """
-    # Load configuration
+    # Try to load configuration from JSON first, then CSV
     config = load_config(config_path)
-    detailed_config = config.get("detailed_plots", {})
+    if not config.get("detailed_plots"):
+        config = load_config_csv(csv_config_path)
+    
+    detailed_config = config.get("detailed_plots", [])
 
     if not detailed_config:
         print("No detailed plot configuration found. Skipping detailed plots.")
@@ -129,7 +163,8 @@ def plot_detailed_co2_data(
     if not os.path.exists(detailed_plots_folder):
         os.makedirs(detailed_plots_folder)
 
-    for csv_filename, plot_config in detailed_config.items():
+    for plot_config in detailed_config:
+        csv_filename = plot_config["file"]
         converted_filename = f"converted_{csv_filename}"
         file_path = os.path.join(converted_files_path, converted_filename)
 
@@ -188,7 +223,7 @@ def plot_detailed_co2_data(
                 marker="o",
                 markersize=3,
                 linewidth=1.5,
-                color="red",  # Different color for detailed plots
+                color="red",
             )
 
             # Format x-axis to show time
@@ -206,7 +241,7 @@ def plot_detailed_co2_data(
             plt.xticks(rotation=45)
             plt.tight_layout()
 
-            # Save the detailed plot
+            # Save the detailed plot with unique filename
             timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
             plot_filename = f"detailed_co2_plot_{file_title}_{start_time_str.replace(':', '')}_{timestamp}.png"
             plot_path = os.path.join(detailed_plots_folder, plot_filename)
@@ -344,8 +379,8 @@ for csv_file in csv_files:
     print(f"Converted data written to {output_file}\n\n")
 
 # Call the plotting functions after processing all files
-print("All files processed. Creating and saving plots...")
-plot_co2_data()
+# print("All files processed. Creating and saving plots...")
+# plot_co2_data()
 
 print("Creating detailed plots based on configuration...")
 plot_detailed_co2_data()

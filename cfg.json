@@ -1,12 +1,19 @@
 {
-    "detailed_plots": {
-        "Test1.csv": {
-            "from": "17:37:21",
-            "length": "02:15"
+    "detailed_plots": [
+        {
+            "file": "Test3.csv",
+            "from": "17:31:00",
+            "length": "06:15"
         },
-        "Test2.csv": {
-            "from": "23:32:37", 
-            "length": "10:00"
+        {
+            "file": "Test6.csv",
+            "from": "17:02:00", 
+            "length": "10:30"
+        },
+        {
+            "file": "Test6.csv",
+            "from": "13:02:00", 
+            "length": "04:00"
         }
-    }
+    ]
 }
